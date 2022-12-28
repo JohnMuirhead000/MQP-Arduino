@@ -26,8 +26,8 @@ void echo_fsm(){
  
       for(int i = 0; i < MAX_BYTES; i++){
         incoming_byte = Serial.read();
-        digit = utf8_to_digit(incoming_byte);
-        Serial.print(digit);
+        // digit = utf8_to_digit(incoming_byte);
+        Serial.print(incoming_byte);
       }
  
       next_state = S_WRITE;
