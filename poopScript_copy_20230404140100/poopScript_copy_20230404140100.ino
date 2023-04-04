@@ -44,15 +44,39 @@ void loop() {
     int first_digit = num / 10000;
 
     if (first_digit == 1){
+
+       Serial.println("num = ");
+       Serial.println(num);
       // we are running the motors: 
-       int second_digit = (num % 10000) / 100;
-       int third_digit = (num % 100) / 10;
-       int fourth_digit = (num / 10) % 10;
+       int second_digit = (num % 10000) / 1000;
+       int third_digit = (num % 1000) / 100;
+       int fourth_digit = (num % 100) / 10;
        int fifth_digit = num % 10;
 
+      //  Serial.println("first_digit = ");
+      //  Serial.println(first_digit);
 
-       int left_percent = third_digit + 10 * second_digit;
-       int right_percent = fifth_digit + 10 * fourth_digit;
+      //  Serial.println("second_digit = ");
+      //  Serial.println(second_digit);
+
+      //  Serial.println("third_digit = ");
+      //  Serial.println(third_digit);
+
+      //  Serial.println("fourth_digit = ");
+      //  Serial.println(fourth_digit);
+
+      //  Serial.println("fifth_digit = ");
+      //  Serial.println(fifth_digit);
+
+
+       double left_percent = second_digit * 10 + third_digit;
+       double right_percent = fourth_digit * 10 + fifth_digit;
+
+       Serial.println("left_percent = ");
+       Serial.println(left_percent);
+       Serial.println("right_percent = ");
+       Serial.println(right_percent);
+       //Serial.println(num);
 
 
        if (left_percent == 0 && right_percent==0){
@@ -67,6 +91,7 @@ void loop() {
          myservo2.write(STOP);
 
        } else if (right_percent == 0){
+
 
          double left_val =  MIN + ((left_percent/100) * (MAX - MIN));
          myservo2.write(left_val);
@@ -90,7 +115,7 @@ void loop() {
       int fourth_digit = (num / 10) % 10;
       int fifth_digit = num % 10;
 
-      int motor_percent = 10*fourth_digit + fifth_digit
+      int motor_percent = 10*fourth_digit + fifth_digit;
 
       double motor_write = MIN + ((motor_percent/100) * (MAX - MIN));
 
@@ -106,8 +131,8 @@ void loop() {
 
 // int poop = 0;
 // void loop() {
-//   myservo2.write(poop);
-//   Serial.println(poop);
+//   myservo2.write(96);
+//   Serial.println(96);
 //   poop = poop + 1;
 // }
 
